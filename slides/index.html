@@ -24,10 +24,10 @@
 <section>
 	<header class="slide">
 		<h2>Hello!</h2>
-		<p class="delayed">I'm Mehmet!</p>
-		<p class="delayed">Based in London</p>
-		<p class="delayed">Front-end developer</p>
-		<p class="delayed">Currently working at the UK Ministry of Justice</p>
+		<p>I'm Mehmet!</p>
+		<p>Based in London</p>
+		<p>Front-end developer</p>
+		<p>Currently working at the UK Ministry of Justice</p>
 	</header>
 
 	<header class="slide">
@@ -51,7 +51,7 @@
 	<section class="slide">
 		<h2>Structured</h2>
 		<ul>
-			<li class="delayed"><a href="http://data.gov.uk">DATA.GOV.UK</a></li>
+			<li><a href="http://data.gov.uk">DATA.GOV.UK</a></li>
 		</ul>
 	</section>
 
@@ -98,8 +98,8 @@
 	<section class="slide">
 		<h2>Unstructured</h2>
 		<h3>Travel and visa information</h3>
-		<p class="delayed">Wikipedia</p>
-		<p class="delayed">IATA website</p>
+		<p>Wikipedia</p>
+		<p>IATA website</p>
 	</section>
 
 	<section class="slide">
@@ -108,22 +108,27 @@
 	</section>
 
 	<section class="slide image">
-		<img src="img/london-coffee-guide.gif" alt="" />
+		<img src="img/london-coffee-guide-256.gif" alt="" />
 	</section>
 
 	<section class="slide">
 		<h2>Ta-da!</h2>
-		<pre><code lang="javascript">
-var marker = createMarker(map,
+		<pre><code lang="javascript">var marker = createMarker(map,
 	new google.maps.LatLng(51.5184214119549, -0.140464603900909),
 	"Kaffeine",
-	"&lt;table&gt;&hellip;")</code></pre>
+	"&lt;table&gt;&hellip;");
+
+var marker = createMarker(map,
+	new google.maps.LatLng(51.5143688040355, -0.126924812793731),
+	"Monmouth Coffee Company (Covent Garden)",
+	"&lt;table&gt;&hellip;");
+</code></pre>
 	</section>
 
 	<section class="slide">
 		<h2>Licences and rate limits</h2>
-		<p class="delayed">Usually easy for structured data</p>
-		<p class="delayed">Scraping is a grey area</p>
+		<p>Usually easy for structured data</p>
+		<p>Scraping is a grey area</p>
 		<p class="delayed"><a href="http://en.wikipedia.org/wiki/Web_scraping#Legal_issues">Do your homework!</a></p>
 	</section>
 
@@ -134,10 +139,10 @@ var marker = createMarker(map,
 	<section class="slide">
 		<h2>Data cleaning</h2>
 		<ul>
-			<li class="delayed">Validation</li>
-			<li class="delayed">Deduplication</li>
-			<li class="delayed">Completeness</li>
-			<li class="delayed">Consistency</li>
+			<li>Validation</li>
+			<li>Deduplication</li>
+			<li>Completeness</li>
+			<li>Consistency</li>
 		</ul>
 		<p class="delayed"><a href="http://office.microsoft.com/en-gb/excel-help/top-ten-ways-to-clean-your-data-HA010221840.aspx">Excel is you friend</a></p>
 	</section>
@@ -146,10 +151,10 @@ var marker = createMarker(map,
 		<h2>Data service</h2>
 		<p>Different needs</p>
 		<ul>
-			<li class="delayed">Mongo or Postgres for geospatial</li>
-			<li class="delayed">Mock services</li>
-			<li class="delayed">Cross-origin enabled APIs</li>
-			<li class="delayed">or just one big JSON file!</li>
+			<li>Mongo or Postgres for location data</li>
+			<li>Mock services</li>
+			<li>Cross-origin enabled APIs</li>
+			<li>or just one big JSON file!</li>
 		</ul>
 	</section>
 
@@ -161,19 +166,25 @@ var marker = createMarker(map,
 	<section class="slide">
 		<h2>Libraries</h2>
 		<ul>
-			<li class="delayed"><a href="http://d3js.org/">d3.js</a></li>
-			<li class="delayed"><a href="http://processing.org/">Processing</a></li>
+			<li><a href="http://d3js.org/">d3.js</a></li>
+			<li><a href="http://processing.org/">Processing</a></li>
 		</ul>
-		<h2 class="delayed">Mapping tools</h2>
-		<ul>
-			<li class="delayed"><a href="https://developers.google.com/maps/">Google Maps API</a></li>
-		</ul>
+	</section>
 
+	<section class="slide">
+		<h2>Mapping tools</h2>
+		<ul>
+			<li><a href="https://developers.google.com/maps/">Google Maps API</a></li>
+			<li><a href="https://www.mapbox.com/">Mapbox</a></li>
+			<li><a href="http://kartograph.org/">Kartograph</a></li>
+		</ul>
 	</section>
 
 	<header class="slide">
 		<h1>Seek inspiration</h1>
 	</header>
+
+
 
 </section>
 
