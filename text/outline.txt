@@ -40,4 +40,6 @@ Data
         - Anna Paul-Smith
         - Rewired State
 
-        
+        - Spark: https://github.com/holman/spark
+        - http://bost.ocks.org/mike/bubble-map/
+        - 
