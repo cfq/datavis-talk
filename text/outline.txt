@@ -1,0 +1,43 @@
+Data
+    - Find
+        - Structured
+            - data.gov.uk
+            - freebase
+            - APIs
+
+        - Unstructured
+            - Scraping
+            - Visas
+                - IATA
+                - Wikipedia
+
+            - Coffee
+                - London Coffee Guide
+
+        - Licences and rate limits
+
+    - Prepare
+        - Clean
+        - Model
+        - Scale
+
+
+    - Visualise
+        - Tools
+            - d3
+            - Google Maps
+            - Smaller libraries
+
+        - Theory
+            - d3 examples
+
+
+    - Inspiration
+        - Florence Nightingale
+        - Ben Fry
+        - Mike Bostock
+        - Jason Davies
+        - Anna Paul-Smith
+        - Rewired State
+
+        

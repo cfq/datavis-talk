@@ -1,0 +1,52 @@
+#intro {
+    background: url('../img/collabolinks.jpg') no-repeat scroll 50% 50%;
+    padding: 0;
+    border: 0;
+}
+
+#intro h1 {
+    color: rgba(255,255,255, 0.9);
+    margin: 20% auto;
+    text-align: center;
+    line-height: 2em;
+    background: rgba(0,0,0, .5);
+    font-size: 2em;
+    padding: 1em;
+}
+
+#intro h1 span {
+    display: block;
+    font-size: 0.8em;
+}
+
+#intro .attribution {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 100%;
+    line-height: 0.3em;
+    color: rgba(255,255,255,.7);
+    text-shadow: .05em .05em .1em rgba(255,255, 255, .6);
+    background: none;
+    padding: .6em 0;
+    overflow: hidden;
+}
+
+
+#css-controls-demo label {
+    display: block;
+}
+
+.slide.image img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio:0) {
+/* hack to avoid using the Object element in Safari/WebKit, due to WebKit Bug 27190 */
+    object[type="image/svg+xml"] {
+        display: none;
+    }
+}

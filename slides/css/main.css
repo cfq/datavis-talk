@@ -1,0 +1,673 @@
+/**
+    Basic CSS so that the slideshow script functions as a slideshow
+    @author Lea Verou
+    @version 1.0
+ */
+/**
+ * "Variables"
+ */
+.slide,
+.delayed,
+.delayed-children > * {
+  transition: .5s;
+  transition-property: transform, opacity, left, top, right, bottom, background; }
+
+/**
+ * Styles
+ */
+html, body {
+  height: 100%; }
+
+body {
+  margin: 0; }
+
+.slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 250%;
+  line-height: 1.6; }
+
+.slide.previous,
+.slide:target,
+.slide.next {
+  display: block;
+  visibility: hidden;
+  overflow: hidden; }
+
+.slide:target {
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  overflow: visible; }
+
+/**
+    Slide numbers
+ */
+#indicator {
+  position: absolute;
+  top: .05in;
+  right: .5em;
+  z-index: 1010;
+  font-size: .15in;
+  color: white;
+  background: rgba(0, 0, 0, 0.25);
+  font-weight: 900;
+  text-shadow: 0.05em 0.05em 0.1em black;
+  text-align: center;
+  padding: 0.1em 0.3em 0;
+  min-width: 1.6em;
+  box-sizing: border-box;
+  border-radius: 999px; }
+
+/**
+    On-screen navigation
+ */
+#onscreen-nav {
+  z-index: 1010;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 1em 1em;
+  font-size: 150%;
+  opacity: 0;
+  transition: 1s opacity; }
+
+#onscreen-nav:hover {
+  opacity: 1; }
+
+#onscreen-nav:not(:hover) button {
+  margin-top: -1.5em;
+  pointer-events: none; }
+
+button.onscreen-nav {
+  float: right;
+  padding: 0.2em 0.5em;
+  border: 0;
+  border-radius: .3em;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-shadow: 0 -0.05em 0.05em black;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+button.onscreen-nav:hover {
+  background: black; }
+
+button.onscreen-nav.prev {
+  float: left; }
+
+/* If there's nothing selected, show the first */
+.slide:first-child {
+  z-index: 2; }
+
+/* Delayed items that are shown incrementally after the slide is */
+.delayed,
+.delayed-children > * {
+  opacity: 0; }
+
+.delayed.displayed,
+.delayed-children > .displayed,
+.previously-displayed {
+  opacity: .3; }
+
+.delayed.current,
+.delayed-children > .current,
+.delayed.displayed.non-dismissable,
+.delayed-children > .displayed.non-dismissable,
+.delayed.displayed.persistent,
+.delayed-children > .displayed.persistent,
+.delayed-children.persistent > .displayed {
+  opacity: 1; }
+
+/**
+    iframe slides
+ */
+.iframe.slide {
+  padding: 0 !important;
+  background: white;
+  text-align: center; }
+
+.iframe.slide > h1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 100%; }
+
+.iframe.slide > h1 > a {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -0.05em 0.05em black; }
+
+.slide > iframe:only-of-type,
+iframe.csss-import {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0; }
+
+iframe.csss-import:not(.show) {
+  z-index: -1;
+  visibility: hidden; }
+
+iframe.csss-import.show {
+  visibility: visible;
+  z-index: 101; }
+
+/**
+    Show thumbnails
+ */
+.show-thumbnails {
+  overflow-x: hidden; }
+
+.show-thumbnails .slide,
+.presenter .slide.next {
+  width: 1024px;
+  height: 768px;
+  box-sizing: border-box;
+  float: left;
+  overflow: hidden;
+  position: static;
+  opacity: 1;
+  margin: -292px -395px;
+  cursor: pointer;
+  transform: scale(0.2, 0.2);
+  transition: 1s transform; }
+
+.show-thumbnails.headers-only .slide {
+  display: none; }
+
+.show-thumbnails.headers-only header.slide {
+  display: block; }
+
+.show-thumbnails .slide .delayed,
+.presenter .slide:target + .slide .delayed {
+  opacity: 1; }
+
+.show-thumbnails .slide:hover,
+.show-thumbnails .slide:target,
+.presenter .slide:target + .slide {
+  outline: 20px solid rgba(255, 255, 255, 0.6);
+  outline-radius: 5px;
+  box-shadow: 5px 5px 10px black; }
+
+.show-thumbnails .slide:target {
+  outline-color: rgba(255, 255, 255, 0.3); }
+
+.show-thumbnails .slide:target:hover {
+  outline-color: rgba(255, 255, 255, 0.9); }
+
+/* Display titles */
+.show-thumbnails .slide[data-title]:after {
+  content: attr(data-title);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.1em 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 250%;
+  text-align: center;
+  text-shadow: 0.05em 0.05em 0.1em black;
+  transform: none; }
+
+/* Hide all elements in slide by hitting Ctrl + J or Shift + J */
+.hide-elements .slide:target > * {
+  opacity: 0;
+  transition: .5s; }
+
+/* Timer */
+#timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  width: 0%;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 5px;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-align: right;
+  box-sizing: border-box;
+  transition: linear; }
+
+#timer:before {
+  content: 'Progress ';
+  text-transform: uppercase;
+  color: white;
+  font-size: 9px; }
+
+#timer.end {
+  width: 100%; }
+
+#timer.end.overtime {
+  width: 0%;
+  left: auto;
+  right: 0; }
+
+/* Presenter & projector views */
+.projector #timer {
+  display: none; }
+
+.presenter-notes {
+  display: none;
+  position: fixed;
+  right: 230px;
+  bottom: 0;
+  left: 0;
+  max-height: 6em;
+  overflow: auto;
+  padding: 0.6em 1em;
+  font-size: 60%;
+  line-height: 1.3;
+  font-weight: normal;
+  resize: vertical;
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+  text-shadow: 0 1px white;
+  box-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, 0.5) inset; }
+
+.presenter .slide.next {
+  position: fixed;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  z-index: 100; }
+
+.presenter .slide:target > .presenter-notes {
+  display: block; }
+
+/**
+	CSSS basic slideshow theme
+	
+	@author Lea Verou
+	@version 1.0
+*/
+/**
+ * Variables
+ */
+.slide h2,
+section > header.slide > h1 {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 100; }
+
+/**
+ * Styles
+ */
+* {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit; }
+
+html {
+  background-size: cover; }
+
+body {
+  font-family: sans-serif; }
+
+button {
+  padding: 0.2em 0.5em; }
+
+a:hover {
+  text-shadow: 0 0 0.5em white, 0 0 1em white; }
+
+select {
+  color: black; }
+
+code, pre, style, textarea, input {
+  font-family: Consolas, "Andale Mono", "Courier New", monospace;
+  background: rgba(0, 0, 0, 0.4); }
+
+code {
+  padding: 0.2em 0.2em 0.1em;
+  white-space: nowrap;
+  border-radius: .2em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 12px rgba(255, 255, 255, 0.15), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3); }
+
+pre, style, textarea {
+  padding: 0.3em 0.5em;
+  margin-left: -.1em;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0.1em 0.1em 0.5em black inset; }
+
+pre > code {
+  padding: 0;
+  white-space: pre;
+  border: 0;
+  background: 0;
+  box-shadow: none; }
+
+textarea {
+  width: 100%;
+  box-sizing: border-box; }
+
+strong, b {
+  font-weight: bold; }
+
+pre strong {
+  text-shadow: 0 0 0.6em white; }
+
+.slide {
+  padding: 0 2.5% 2%;
+  background: rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 30px solid transparent; }
+
+#indicator {
+  background: rgba(255, 255, 255, 0.6);
+  color: black;
+  text-shadow: 0.03em 0.03em 0.1em white; }
+
+.slide h2 {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 1.2in; }
+
+.slide p,
+.slide li {
+  font-weight: bold;
+  letter-spacing: -.03em; }
+
+.slide > ul {
+  list-style: none; }
+
+.slide ol {
+  margin-left: 2em; }
+
+.slide > ul ul {
+  margin-left: 2em;
+  list-style: none; }
+
+.slide li li {
+  font-size: 80%; }
+
+.slide li {
+  margin: 0.2em 0; }
+
+.slide > ul > li:before {
+  content: '\2714';
+  color: #a0c12c;
+  padding-right: .2em; }
+
+.slide li li:before {
+  content: '\279C';
+  color: #28bcbc;
+  padding-right: .2em; }
+
+section > header.slide {
+  background-color: rgba(0, 0, 0, 0.8); }
+
+section > header.slide > h1 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -.6em;
+  font-size: 400%;
+  line-height: 1;
+  text-align: center; }
+
+.slide .emphasis {
+  padding: 0.4em 0.5em 0.3em;
+  margin: 0.3em 0;
+  background: #f80;
+  background: linear-gradient(#ffaa00, #ff8800);
+  color: white;
+  font-weight: bold;
+  letter-spacing: -.05em;
+  line-height: .85;
+  text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.4);
+  border-radius: .3em;
+  box-shadow: 0.1em 0.1em 0.5em black; }
+
+.light.slide .emphasis {
+  box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.4); }
+
+.slide .emphasis::before {
+  content: '\279C';
+  color: rgba(255, 255, 255, 0.5);
+  float: left;
+  width: .75em;
+  height: 0;
+  padding: 0.45em 0 0.3em;
+  margin: -0.2em 0.2em 0 -0.25em;
+  border: 0.12em solid;
+  text-align: center;
+  line-height: 0;
+  font-size: 120%;
+  font-family: inherit;
+  text-shadow: none;
+  border-radius: 999px;
+  transform: rotate(45deg); }
+
+.attribution {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1em;
+  padding: 0.5em 1em;
+  font-size: 30%;
+  text-shadow: 0.05em 0.05em 0.1em black; }
+
+.attribution a {
+  text-decoration: none; }
+
+.attribution a::after {
+  content: " (" attr(href) ")"; }
+
+/* Syntax highlighting */
+.comment {
+  color: #999; }
+
+.string {
+  color: yellow; }
+
+.keyword {
+  font-weight: bold;
+  color: deeppink; }
+
+.number, .boolean {
+  color: #0cf; }
+
+.regex {
+  color: orange; }
+
+/**
+ * CSS I've found useful for more than one CSSS presentations 
+ * and thought it might be useful for others too
+ * @author Lea Verou
+ */
+/* Mark slides as incomplete to spot them easier */
+.incomplete.slide::after {
+  content: 'INCOMPLETE';
+  font-weight: bold;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  padding: 0.1em 0.4em 0;
+  border: 0.1em solid;
+  color: rgba(255, 0, 0, 0.8);
+  font-size: 140%;
+  border-radius: .2em;
+  transform: rotate(30deg); }
+
+/* Ribbon */
+[data-type].slide:not(.hide-ribbon):after {
+  content: attr(data-type);
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: white;
+  font-size: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #ffaa00;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  line-height: 1.6;
+  min-width: 20em;
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.3);
+  transform: rotate(45deg) translate(6em, -2em); }
+
+/* Full image slides */
+@keyframes scroll {
+  from, to {
+    background-position: 0 0; }
+
+  80%, 95% {
+    background-position: 0 100%; } }
+
+.image.slide {
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+  image-rendering: crisp-edges; }
+
+/* When you don't want to clip the image at all */
+.partial.image.slide {
+  background-size: contain; }
+
+/* An image that scrolls indefinitely */
+.scrolling.image.slide:target {
+  background-position: 0 0;
+  background-repeat: repeat-y;
+  animation: scroll 10s 1s infinite linear forwards; }
+
+.bottom-heavy.image.slide {
+  background-position: center bottom; }
+
+.top-heavy.image.slide {
+  background-position: center top; }
+
+.top-heavy.image.slide:target,
+.bottom-heavy.image.slide:target {
+  display: block; }
+
+.image.slide > .caption,
+.image.slide > h1:only-child,
+.image.slide > hgroup:only-child {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.2em 0;
+  margin: 0;
+  margin-top: 300px;
+  margin-top: calc(384px - 1em);
+  margin-top: calc(50vh - 1em);
+  text-align: center;
+  font-family: inherit;
+  font-weight: inherit;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 -0.05em 0.1em black;
+  white-space: nowrap; }
+
+.image.slide > .caption,
+.image.slide > h1:only-child {
+  font-size: 200%;
+  line-height: 1.2; }
+
+.top-heavy.image.slide > .caption,
+.top-heavy.image.slide > h1:only-child,
+.top-heavy.image.slide > hgroup:only-child {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: .5in; }
+
+.bottom-heavy.image.slide > .caption,
+.bottom-heavy.image.slide > h1:only-child,
+.bottom-heavy.image.slide > hgroup:only-child {
+  margin: 0.5in 0 0; }
+
+.image.slide > .caption h1 {
+  font: inherit;
+  margin-bottom: 0; }
+
+.image.slide > .caption h1 + a {
+  font-size: 30%;
+  display: block;
+  text-shadow: inherit; }
+
+.slide[data-source]:after {
+  content: attr(data-source);
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  z-index: 100;
+  color: white;
+  font-size: 15px;
+  text-shadow: 0 0 0.1em black;
+  text-shadow: 0 0 0.1em 0.1em black; }
+
+/* END Full image slides */
+#intro {
+  background: url("../img/collabolinks.jpg") no-repeat scroll 50% 50%;
+  padding: 0;
+  border: 0; }
+
+#intro h1 {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 20% auto;
+  text-align: center;
+  line-height: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 2em;
+  padding: 1em; }
+
+#intro h1 span {
+  display: block;
+  font-size: 0.8em; }
+
+#intro .attribution {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 100%;
+  line-height: 0.3em;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0.05em 0.05em 0.1em rgba(255, 255, 255, 0.6);
+  background: none;
+  padding: 0.6em 0;
+  overflow: hidden; }
+
+#css-controls-demo label {
+  display: block; }
+
+.slide.image img {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* hack to avoid using the Object element in Safari/WebKit, due to WebKit Bug 27190 */
+  object[type="image/svg+xml"] {
+    display: none; } }
