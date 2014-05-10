@@ -184,12 +184,89 @@ var marker = createMarker(map,
 		<h1>Seek inspiration</h1>
 	</header>
 
+	<section class="slide image">
+		<img src="img/nightingale-mortality.jpg" alt="" />
+	</section>
+
+	<section class="slide iframe">
+		<iframe src="iframes/zipdecode/"></iframe>
+	</section>
+
+	<section class="slide">
+		<h2>d3.js community</h2>
+		<ul>
+			<li><a href="http://bost.ocks.org/mike/">Mike Bostock</a>
+				<ul>
+					<li>His website: <a href="http://bost.ocks.org/mike/">http://bost.ocks.org/mike/</a></li>
+					<li>bl.ocks.org: <a href="http://bl.ocks.org">http://bl.ocks.org/</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="https://www.jasondavies.com/">Jason Davies</a>
+				<ul>
+					<li>His website: <a href="https://www.jasondavies.com/">jasondavies.com</a></li>
+					<li>His bl.ocks.org: <a href="http://bl.ocks.org/jasondavies">http://bl.ocks.org/jasondavies</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="http://anna.ps/">Anna Powell-Smith</a>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide image height-100 overflow-hidden">
+		<img src="img/d3-different-visualisations.png" alt="" />
+	</section>
+
+	<section class="slide iframe">
+		<iframe src="iframes/d3-showreel/"></iframe>
+	</section>
+
+	<section class="slide">
+		<h2>Spark</h2>
+
+		<pre><code>spark 0 30 55 80 33 150
+▁▂▃▅▂▇</code></pre>
+	
+		<pre class="delayed"><code>› curl http://earthquake.usgs.gov/earthquakes/catalogs/eqs1day-M1.txt --silent | 
+  sed '1d' |
+  cut -d, -f9 |
+  spark
+  ▁▁▁▁▃▁▁▁▁▁▁▁▁█▁▁▁▃▁▁▃▁▃▁▃▁▁▁▁▁▁▃▁▁▁▃▁▅▁▁▁▁
+
+		</code></pre>
+	</section>
+
+	<section class="slide">
+		<h2>Example data</h2>
+		<pre><code>Src,Eqid,Version,Datetime,Lat,Lon,Magnitude,Depth,NST,Region
+ci,15499753,2,"Friday, May  9, 2014 23:00:10 UTC",33.5610,-116.7585,1.3,6.00,26,"Southern California"
+ci,15499737,2,"Friday, May  9, 2014 22:58:10 UTC",33.5613,-116.7605,1.2,6.30,19,"Southern California"
+ci,15499729,2,"Friday, May  9, 2014 22:57:50 UTC",33.5565,-116.7603,1.8,7.40,37,"Southern California"
+nc,72215145,0,"Friday, May  9, 2014 22:44:12 UTC",37.9735,-118.6868,1.8,9.00,16,"Central California"
+hv,60686786,2,"Friday, May  9, 2014 21:47:30 UTC",19.3055,-155.2170,2.0,1.30,74,"Island of Hawaii, Hawaii"
+nc,72215125,0,"Friday, May  9, 2014 21:38:07 UTC",38.8237,-122.7507,1.1,1.70,19,"Northern California"
+uu,60068127,2,"Friday, May  9, 2014 21:35:19 UTC",38.9570,-111.3712,1.3,2.50, 6,"Utah"
+nc,72215095,0,"Friday, May  9, 2014 19:59:47 UTC",36.5837,-121.4197,1.5,1.10, 8,"Central California"
+ci,15499697,2,"Friday, May  9, 2014 19:57:35 UTC",33.5580,-116.7607,1.4,7.80,11,"Southern California"
+</code></pre>
+	</section>
+
+	<section class="iframe slide">
+		<iframe src="iframes/bezier-curves/"></iframe>
+	</section>
 
 
 </section>
 
 <footer class="slide">
 	<h2>Thank you!</h2>
+
+	<ul>
+		<li>Twitter: <a href="https://twitter.com/cfq">@cfq</a></li>
+		<li>This presentation at: <a href="https://github.com/cfq/datavis-talk">Github</a></li>
+	</ul>
+
 	<p>References:</p>
 	<ul>
 		<li>Intro image: 

@@ -661,11 +661,19 @@ section > header.slide > h1 {
 #css-controls-demo label {
   display: block; }
 
-.slide.image img {
+.slide.image img, .image img {
   max-height: 100%;
   max-width: 100%;
   display: block;
   margin: auto; }
+
+.overflow-hidden {
+  overflow: hidden!important; }
+
+.height-100 img {
+  height: 100%;
+  width: auto;
+  max-width: none!important; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 0) {
   /* hack to avoid using the Object element in Safari/WebKit, due to WebKit Bug 27190 */
