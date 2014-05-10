@@ -31,6 +31,8 @@
 #css-controls-demo label {
   display: block; }
 
+.slide.image.white-bg, .image.white-bg {
+  background: white; }
 .slide.image img, .image img {
   max-height: 100%;
   max-width: 100%;

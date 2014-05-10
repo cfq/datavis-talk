@@ -38,6 +38,10 @@
 }
 
 .slide.image, .image {
+    &.white-bg {
+        background: white;
+    }
+
     img {
         max-height: 100%;
         max-width: 100%;
